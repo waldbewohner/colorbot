@@ -1,0 +1,24 @@
+{
+  "name": "robotjs",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "clipboardy": "^4.0.0",
+    "jimp": "^0.22.10",
+    "node-global-key-listener": "^0.1.1",
+    "node-notifier": "^10.0.1",
+    "robotjs": "^0.6.0",
+    "tesseract.js": "^5.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
