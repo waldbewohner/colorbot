@@ -4,15 +4,13 @@ import robot from "robotjs"
 import Tesseract from "tesseract.js";
 import Jimp from "jimp";
 
-async function readImage() {
-  
-  console.time("readImage")
+async function readImage(topLeft, bottomRight) {
+ 
   try {
-
+    const width = bottomRight.x - topLeft.x;
+    const height = bottomRight.y - topLeft.y;
+    const screenshot = robot.screen.capture(topLeft.x, topLeft.y, width, height);
     
-    const x = 1663, y = 600, width = 200, height = 200;
-  const screenshot = robot.screen.capture(x, y, width, height);
-
   // Überprüfen Sie die tatsächliche Breite der Daten im Buffer
   const bufferWidth = screenshot.byteWidth / 4; // Teilen durch 4 für RGBA
 
@@ -30,18 +28,18 @@ async function readImage() {
   }
 
   const imagePath = 'screenshot.png';
- /*  image.greyscale(); // Umwandlung in Graustufen
-    image.contrast(0.7); // Erhöhen des Kontrasts */
+   image.greyscale(); // Umwandlung in Graustufen
+    image.contrast(0.7); // Erhöhen des Kontrasts 
   await image.writeAsync(imagePath);
 
   // Verwenden Sie Tesseract, um Text zu erkennen
   
     const result = await Tesseract.recognize(imagePath, 'eng', {oem: 1});
-    console.log('Erkannter Text:', result.data.text);
+    return result.data.text
   } catch (error) {
     console.error('Fehler bei der Texterkennung:', error);
+    return ""
   }
-  console.timeEnd("readImage")
 }
 
 export default readImage

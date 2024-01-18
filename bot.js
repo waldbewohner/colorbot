@@ -3,7 +3,7 @@ import notifier from 'node-notifier';
 import { GlobalKeyboardListener } from 'node-global-key-listener';
 import copyToClipboard from './utils/helper/copyToClipboard.js';
 import createColorImageAndNotify from './utils/helper/createColorImageAndNotify.js';
-import mainLoop from './games/moreore/mainLoop.js';
+import mainLoop from './games/kings2/mainLoop.js';
 import readImage from "./utils/bot/readImage.js"
 import getColorsFromScreenshot from './utils/helper/getColorFromScreenshot.js';
 
@@ -60,20 +60,20 @@ v.addListener(async (e, down) => {
       title: 'Koordinaten',
       message: `X: ${mouse.x} Y: ${mouse.y}`
     });
-    console.log(`{x: ${mouse.x}, y: ${mouse.y}}`)
+    console.log(`{x: ${mouse.x}, y: ${mouse.y}},`)
     copyToClipboard(`{x: ${mouse.x}, y: ${mouse.y}}`);
   } else if (e.name === 'F4') {
     const screenSize = robot.getScreenSize()
     const screenshot = robot.screen.capture(0, 0, screenSize.width, screenSize.height);
     var mouse = robot.getMousePos();
-    const color = screenshot.colorAt(mouse.x, mouse.y);
+    const color = `"${screenshot.colorAt(mouse.x, mouse.y)}"`
 
     createColorImageAndNotify(color)
     copyToClipboard(color);
     
 
     console.log(color)
-  } else if (e.name === 'F8') {
+  } else if (e.name === 'F5') {
     console.log("try")
     const colors = getColorsFromScreenshot()
     stopBot()

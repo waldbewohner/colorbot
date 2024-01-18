@@ -21,7 +21,7 @@ async function createColorImageAndNotify(hexColor) {
       title: 'Farbe',
       message: hexColor,
       contentImage: filePath,
-      icon: icon
+      icon: filePath
     });
   }
 

@@ -4,7 +4,7 @@ import rgbToHex from "../helper/rgbToHex.js";
 
 async function getColorsFromScreenshot() {
 
-    const screenshot = robot.screen.capture(739, 526, 500, 90);
+    const screenshot = robot.screen.capture(848, 653, 35, 30);
 
     const buffer = screenshot.image;
     
