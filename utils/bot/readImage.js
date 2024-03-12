@@ -9,7 +9,9 @@ async function readImage(topLeft, bottomRight) {
   try {
     const width = bottomRight.x - topLeft.x;
     const height = bottomRight.y - topLeft.y;
+    console.time("image")
     const screenshot = robot.screen.capture(topLeft.x, topLeft.y, width, height);
+    console.timeEnd("image")
     
   // Überprüfen Sie die tatsächliche Breite der Daten im Buffer
   const bufferWidth = screenshot.byteWidth / 4; // Teilen durch 4 für RGBA

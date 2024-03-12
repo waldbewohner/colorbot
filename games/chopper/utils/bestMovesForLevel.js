@@ -1,4 +1,18 @@
 
+import fs from 'fs';
+const path = './moves.txt'; // Specify the path to your file
+
+function appendMovesToFile(moves) {
+  // Convert array to a comma-separated string without adding a comma at the end
+  const movesString = moves.join(',') + ','; // Add a comma after each move
+  fs.appendFile(path, movesString, (err) => {
+      if (err) {
+          console.error('Failed to append moves to file:', err);
+      } else {
+          console.log('Moves appended to file successfully.');
+      }
+  });
+}
 
 function bestMovesForLevel(levelArray) {
     let levels = levelArray
@@ -12,13 +26,12 @@ function bestMovesForLevel(levelArray) {
     }
 
     if(levels[levels.length - 1][0] === 2 && levels[levels.length - 1][1] === 2 ) {
-        console.log("Skip because player detected ttwo times")
+        console.log("Skip because player detected two times")
         return []
     }
   
     for (let i = levels.length - 1; i >= 0; i--) {
         if(levels.length === 1) break
-        let level = levels[i];
         let nextLevel = levels[i - 1];
         let click = ""
       if(nextLevel && nextLevel[playerPosition] === 0) {
@@ -49,11 +62,9 @@ function bestMovesForLevel(levelArray) {
         
     }
     //if we have to change direction in the last turn we are sure to double click
-    if(moves[moves.length - 1] !== moves[moves.length - 2]) moves.push(moves[moves.length - 1])
+    //if(moves[moves.length - 1] !== moves[moves.length - 2]) moves.push(moves[moves.length - 1])
 
-    //if all same add one more
-    //if(new Set((moves)).size === 1) moves.push(moves[moves.length - 1]);
-    
+    //appendMovesToFile(moves);
 
     return moves 
 }
