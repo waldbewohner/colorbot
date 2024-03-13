@@ -6,7 +6,7 @@ This repository is packed with essential tools to empower your projects. We harn
 
 Say goodbye to the hassle of generating screenshots to obtain in-game coordinates or colors. With a simple press of <kbd>F3</kbd>, you can instantly capture the current mouse position, and <kbd>F4</kbd> lets you grab the hex color of your cursor's current location.
 
-For an in-depth look at how to leverage these tools to break the game "Kick ja chup" and elevate your botting skills, check out my blog post: [How to Master the Art of Gamebotting](https://medium.com/@nickkrueger/hello-world-fb48121fcd56) 
+For an in-depth look at how to leverage these tools to break the game [Kick Ya Chop](https://www.addictinggames.com/clicker/kick-ya-chop)   and elevate your botting skills, check out my blog post: [How to Master the Art of Gamebotting](https://medium.com/@nickkrueger/hello-world-fb48121fcd56) 
 
 ## Features and Key Bindings
 To utilize the features of this toolkit, simply initiate it with:
