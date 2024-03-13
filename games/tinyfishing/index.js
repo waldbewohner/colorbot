@@ -58,6 +58,8 @@ async function mainLoop() {
   
     
     console.timeEnd("start")
+
+    await new Promise(resolve => setTimeout(resolve, 100));
   
   }
 

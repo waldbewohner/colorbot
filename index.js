@@ -3,15 +3,10 @@ import notifier from 'node-notifier';
 import { GlobalKeyboardListener } from 'node-global-key-listener';
 import copyToClipboard from './utils/helper/copyToClipboard.js';
 import createColorImageAndNotify from './utils/helper/createColorImageAndNotify.js';
-import mainLoop from './games/chopper/index_record.js';
-import readImage from "./utils/bot/readImage.js"
-import getColorsFromScreenshot from './utils/helper/getColorFromScreenshot.js';
-
+import mainLoop from './games/template/index.js';
 const v = new GlobalKeyboardListener();
 
 let running = false;
-var loops = 0;
-let startTime = new Date()
 
 function stopBot(){
   running = false
@@ -31,19 +26,9 @@ v.addListener(async (e, down) => {
     let screenSize = robot.getScreenSize()
     
     while(running){
-      
       await mainLoop(screenSize, stopBot)
-      loops++
-
-      if(loops === 25) {
-        console.log("Zeit vergangen: ", (new Date() - startTime) / 1000)
-        startTime = new Date()
-        loops = 0;
-      }
-
       await new Promise(resolve => setTimeout(resolve, 5));
     }
-    
     
 
   } else if (e.name === 'F2') {
@@ -56,7 +41,7 @@ v.addListener(async (e, down) => {
     var mouse = robot.getMousePos();
 
     notifier.notify({
-      title: 'Koordinaten',
+      title: 'Coordiantes',
       message: `X: ${mouse.x} Y: ${mouse.y}`
     });
     console.log(`{x: ${mouse.x}, y: ${mouse.y}},`)
@@ -69,15 +54,7 @@ v.addListener(async (e, down) => {
 
     createColorImageAndNotify(color)
     copyToClipboard(color);
-    
-
     console.log(color)
-  } else if (e.name === 'F5') {
-    console.log("try")
-    const colors = getColorsFromScreenshot()
-    stopBot()
-    console.log(colors)
-
   } 
 
     
@@ -85,4 +62,4 @@ v.addListener(async (e, down) => {
 
 
 
-console.log("F1 START | F2 STOP | F3 GET COORDS | F4 FIND CIRCLE");
+console.log("F1 START | F2 STOP | F3 GET COORDINATES | F4 GET COLOR");

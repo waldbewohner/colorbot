@@ -1,5 +1,5 @@
 
-import robot from "robotjs"
+
 import path from "path"
 import { fileURLToPath } from 'url';
 import Jimp from "jimp"
@@ -14,11 +14,10 @@ async function createColorImageAndNotify(hexColor) {
     const image = new Jimp(width, height, hexColor);
   
     const filePath = path.join(__dirname, 'color_square.png');
-    const icon = path.join(__dirname, 'icon.png');
     await image.writeAsync(filePath);
   
     notifier.notify({
-      title: 'Farbe',
+      title: 'Color',
       message: hexColor,
       contentImage: filePath,
       icon: filePath
